@@ -1,0 +1,99 @@
+#include <iostream> 
+
+#include <math.h> 
+
+ 
+
+int main() 
+
+{ 
+
+    setlocale(0, "ukr"); 
+
+    float a, b, c; // коефiцiєнти рiвняння 
+
+    float d; // дискримiнант 
+
+    float x1, x2; // коренi рiвняння 
+
+    std::cout << "Введiть коефiцiєнти рiвняння!\n"; 
+
+    std::cin >> a >> b >> c; 
+
+    d = b * b - 4 * a * c; 
+
+ 
+
+    if (a == 0) 
+
+    { 
+
+        if (b != 0) 
+
+        { 
+
+            std::cout << "Рiвняння має 1 корiнь - "; 
+
+            x1 = -c / b; 
+
+            std::cout<< x1; 
+
+        } 
+
+        else 
+
+        { 
+
+            std::cout << "Невiрно введенi данi"; 
+
+        } 
+
+    } 
+
+    else 
+
+    { 
+
+        // a!=0 
+
+        if (d < 0) 
+
+            std::cout << "Рiвняння не має коренiв"; 
+
+        else 
+
+        { 
+
+            if (d == 0) 
+
+            { 
+
+                std::cout << "Рiвняння має 1 корiнь - "; 
+
+                x1 = -b / (2 * a); 
+
+                std::cout << x1; 
+
+            } 
+
+            else 
+
+            { 
+
+                std::cout << "Рiвняння має 2 коренi\n"; 
+
+                x1 = (-b - sqrt(d)) / (2 * a); 
+
+                x2 = (-b + sqrt(d)) / (2 * a); 
+
+                std::cout << "x1 = " << x1; 
+
+                std::cout << "\nx2 = " << x2; 
+
+            } 
+
+        } 
+
+    } 
+
+}
