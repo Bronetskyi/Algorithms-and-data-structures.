@@ -1,0 +1,183 @@
+#include <stdio.h> 
+#include <stdlib.h> 
+#include "linkedlist.h" 
+
+/* 
+ * Реалізація однозвязного списку  
+ * Типи даних: 
+   LIST - АТД список, кожен вузол списку складається з двох полів: 
+        element - елемент, що міститсья в цьому вузлі 
+        next - позиція наступного вузла списку 
+   position - позиція елементу в списку 
+   elementtype - тип значення, що зберігається в елементі списку 
+ 
+   допоміжні функції: 
+   newnode () - створює новий вузол списку типу celltype 
+   printlist(L) - друкує перелік елементів, що знаходятсья в списку L; 
+ */ 
+
+/* 
+  * функція створює порожній список 
+  */ 
+LIST MAKENULL(LIST L) { 
+ 
+    L = new celltype; 
+    L->next = NONE; 
+
+    return L; 
+
+} 
+
+ 
+
+/* 
+
+ * функція повертає позицію останнього елементу 
+
+ * в списку L 
+
+ */ 
+
+position END(LIST L) { 
+
+ 
+
+    position pos = L; 
+
+    while (pos->next!=NONE) 
+
+        pos = pos->next; 
+
+    return pos;  
+
+} 
+
+ 
+
+/* 
+
+ * функція повертає позицію перого елементу в 
+
+ * в списку L 
+
+ */ 
+
+position FIRST(LIST L) { 
+
+    return L->next; 
+
+} 
+
+ 
+
+/* 
+
+ * функція повертає наступну позицію після 
+
+ * позиції p в списку L 
+
+ */ 
+
+position NEXT(position p, LIST L) { 
+
+    return p->next; 
+
+} 
+
+ 
+
+/* 
+
+ * функція додає елемент x, в позиції p 
+
+ * списку L 
+
+ */ 
+
+LIST INSERT(elementtype x, position p, LIST L) { 
+
+    position tempPos = p->next; 
+
+    p->next = newnode(); 
+
+    p->next->element = x; 
+
+    p->next->next = tempPos; 
+
+    return NONE; 
+
+} 
+
+ 
+
+/* 
+
+ * функція видалає елемент, що знаходиться на 
+
+ * позиції p в списку L 
+
+ */ 
+
+LIST DELETE(position p, LIST L) { 
+
+    if(p->next!=NONE)p->next = p->next->next; 
+
+    return L; 
+
+} 
+
+ 
+
+/* 
+
+ * фунція повертає значення елементу що знаходиться на 
+
+ * позиції p в списку L 
+
+ */ 
+
+elementtype RETRIEVE(position p, LIST L) { 
+
+    return p->next->element; 
+
+} 
+
+ 
+
+/* 
+
+ * функція повертає позицію елементу з значення x в списку L, 
+
+ * якщо такого елементу не існує, то повертається NONE 
+
+ */ 
+
+position LOCATE(elementtype x, LIST L) { 
+
+    position pos = L; 
+
+    while (pos->next != NONE) 
+
+    { 
+
+        if (pos->next->element == x)return pos; 
+
+        pos = pos->next; 
+
+    } 
+
+    return NONE; 
+
+} 
+
+ 
+
+int main(int argc, char** argv) { 
+
+    run(); 
+
+    system("PAUSE"); 
+
+    return 0; 
+
+}  
